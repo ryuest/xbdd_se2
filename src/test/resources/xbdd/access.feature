@@ -13,23 +13,6 @@ Feature: Access XBDD
     Given xbdd server is running
     When the user enter correct credentials
     Then the user can login
-  
-  Scenario: Only authorized users must be able to login to XBDD
-    Given xbdd server is running
-    When the user enter wrong credentials
-    Then the user cannot login
-
-  @manual
-  Scenario: Prompted to enter user credentials each time login to XBDD
-    Given the user is logged in
-    When the session expires
-    Then the user is prompted to enter user credentials again
-
-  @browser
-  Scenario: Prompted to enter user credentials after logout
-    Given the user is logged in
-    When the user logs out
-    Then the user is prompted to enter user credentials again
 
   Scenario: User can re login when session is expired and sends ajax request
     Given the user is logged in

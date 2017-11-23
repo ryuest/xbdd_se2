@@ -41,6 +41,7 @@ public class XbddDriver extends EventFiringWebDriver {
 		final WebDriver driver;
 		switch (getSeleniumProfile()) {
 			case "chrome":
+				System.setProperty("webdriver.chrome.driver", "C:/git/chromedriver.exe");
 				driver = new ChromeDriver();
 				break;
 			case "phantom-js":
@@ -50,6 +51,7 @@ public class XbddDriver extends EventFiringWebDriver {
 				driver = getSeleniumGridRemoteDriver();
 				break;
 			default:
+				System.setProperty("webdriver.gecko.driver", "C:/git/geckodriver.exe");
 				driver = new FirefoxDriver();
 				break;
 		}

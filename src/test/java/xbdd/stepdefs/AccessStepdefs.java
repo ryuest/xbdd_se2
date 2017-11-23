@@ -88,32 +88,32 @@ public class AccessStepdefs {
 
 	@Then("^the user is prompted to enter user credentials again$")
 	public void the_user_is_prompted_to_enter_user_credentials_again() {
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".text-plain"),
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".text-plain"),
 				"Please enter log-in details"));
 	}
 
 	@Then("^the user cannot login$")
 	public void the_user_cannot_login() {
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".form-error-text"),
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".form-error-text"),
 				"Login attempt failed."));
 	}
 
 	@Then("^the user can login$")
 	public void the_user_can_login() {
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("h1"),
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("h1"),
 				"Welcome to XBDD"));
 	}
 
 	@Then("^the user can access xbdd$")
 	public void the_user_can_access_xbdd() {
 		this.webDriver.navigate().to(this.xbddInstance.getBaseURL());
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("a"), "XBDD"));
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("a"), "XBDD"));
 	}
 
 	@Then("^a login dialog is displayed$")
 	public void a_login_dialog_is_displayed() {
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("session-timeout-iframe")));
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("j_username")));
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("session-timeout-iframe")));
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.visibilityOfElementLocated(By.id("j_username")));
 	}
 
 	@Then("^the user can log in again$")
@@ -128,7 +128,7 @@ public class AccessStepdefs {
 			((JavascriptExecutor) this.webDriver)
 					.executeScript("YUI().use('node', 'statusHelpers','io-base', 'session-timeout', 'handlebars', 'xbdd', function(Y) { Y.io(Y.statusHelpers.getContext(), { method: 'GET', on: { success: function() { document.body.innerHTML = '<span id=testspanresult>TEST SUCCESS</span>'; } } }); });");
 		}
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#testspanresult")));
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#testspanresult")));
 	}
 
 	private void login(final String username, final String password) {
@@ -136,8 +136,8 @@ public class AccessStepdefs {
 		if (this.webDriver.findElements(By.id("j_username")).size() == 0) {
 			the_user_can_access_xbdd();
 		}
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#j_username"))).sendKeys(username);
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#j_password"))).sendKeys(password);
-		new WebDriverWait(this.webDriver, 10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-login"))).click();
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#j_username"))).sendKeys(username);
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#j_password"))).sendKeys(password);
+		new WebDriverWait(this.webDriver, 100).until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-login"))).click();
 	}
 }

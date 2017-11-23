@@ -26,6 +26,6 @@ public class XBDDInstance {
 		} catch (final UnknownHostException e) {
 			hostname = "localhost";
 		}
-		return "https://" + hostname + ":" + Integer.valueOf(System.getProperty("xbdd.https.port", "28443")) + "/xbdd/";
+		return "https://" + "localhost" + ":" + Integer.valueOf(System.getProperty("xbdd.https.port", "8443")) + "/xbdd/";
 	}
 }

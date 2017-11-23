@@ -28,5 +28,6 @@
 <role rolename = "admin"/>
 <user username="bamboo" password="bamboo" roles="manager-script,manager-gui"/>
 <user username="test" password="password"/>
+    <user username="xbdd" password="xbdd"/>
 <user username="admin" password="password" roles="admin"/>
 </tomcat-users>

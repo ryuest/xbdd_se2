@@ -30,7 +30,11 @@
 		<version.servicepack>0</version.servicepack>
 		<cucumberJvmVersion>1.1.8</cucumberJvmVersion>
 		<jersey-version>2.25.1</jersey-version>
-		<xbdd.mongo.hostname></xbdd.mongo.hostname>
+		<xbdd.mongo.hostname>localhost</xbdd.mongo.hostname>
+		<xbdd.mongo.port>27017</xbdd.mongo.port>
+		<tomcat.http.port>8080</tomcat.http.port>
+		<tomcat.https.port>8443</tomcat.https.port>
+		<tomcat.ajp.port>8009</tomcat.ajp.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -171,10 +175,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<keystore>${project.build.directory}/keys/.keystore</keystore>
+					<keystore>C://Users//jboiko//.keystore</keystore>
 					<dname>cn=localhost</dname>
-					<keypass>ih8Passwords</keypass>
-					<storepass>ih8Passwords</storepass>
+					<keypass>Password1</keypass>
+					<storepass>Password1</storepass>
 					<alias>myCert</alias>
 					<keyalg>RSA</keyalg>
 				</configuration>
@@ -192,10 +196,10 @@
 						<phase>pre-integration-test</phase>
 						<configuration>
 							<portNames>
-								<portName>tomcat.http.port</portName>
-								<portName>tomcat.https.port</portName>
-								<portName>tomcat.ajp.port</portName>
-								<portName>mongo.port</portName>
+								<portName>${tomcat.http.port}</portName>
+								<portName>${tomcat.https.port}</portName>
+								<portName>${tomcat.ajp.port}</portName>
+								<portName>${xbdd.mongo.port}</portName>
 							</portNames>
 						</configuration>
 					</execution>
@@ -212,7 +216,7 @@
 							<goal>start</goal>
 						</goals>
 						<configuration>
-							<port>${mongo.port}</port>
+							<port>${xbdd.mongo.port}</port>
 							<version>3.4.3</version>
 						</configuration>
 					</execution>
@@ -230,11 +234,11 @@
 				<version>2.2</version>
 				<configuration>
 					<path>/xbdd</path>
-					<port>28080</port>
-					<httpsPort>28443</httpsPort>
-					<ajpPort>28009</ajpPort>
-					<keystoreFile>../keys/.keystore</keystoreFile>
-					<keystorePass>ih8Passwords</keystorePass>
+					<port>8080</port>
+					<httpsPort>8443</httpsPort>
+					<ajpPort>8009</ajpPort>
+					<keystoreFile>C://Users//jboiko//.keystore</keystoreFile>
+					<keystorePass>Password1</keystorePass>
 					<tomcatUsers>src/main/tomcatconf/tomcat-users.xml</tomcatUsers>
 					<contextFile>src/test/resources/conf/contextFile.xml</contextFile>
 				</configuration>
@@ -289,7 +293,7 @@
 							</excludes>
 							<systemPropertyVariables>
 								<xbdd.https.port>${tomcat.https.port}</xbdd.https.port>
-								<phantomjs.binary.path>${phantomjs.binary}</phantomjs.binary.path>
+								<phantomjs.binary.path>C:/git3/selenium-samples-java/phantomjs.exe</phantomjs.binary.path>
 							</systemPropertyVariables>
 						</configuration>
 						<goals>
